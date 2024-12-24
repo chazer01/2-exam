@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exploits Articles - Astrum IT Academy H4ck3rs</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body class="page-container">
+    <div class="content-wrap">
+        <header>
+            <h1>Astrum IT Academy H4ck3rs</h1>
+        </header>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="" class="active">Exploits</a>
+            <a href="">Tools</a>
+            <a href="">CTF</a>
+            <a href="articles/add-post.html">Add New Article</a>
+        </nav>
+
+        <main>
+            <h2>Exploits Articles</h2>
+            
+            <div class="article-list">
+                <article class="post">
+                    <h3>New Zero-day Exploit Discovered in Popular CMS</h3>
+                    <p class="post-meta">
+                        <span class="author">By: Anon1337</span>
+                        <span class="date">Date: June 15, 2023</span>
+                    </p>
+                    <p>A critical vulnerability has been found in a widely-used Content Management System. Learn about the exploit, its potential impact, and how to protect your systems.</p>
+                    <a href="detail.html" class="read-more">Read More</a>
+                </article>
+
+                <article class="post">
+                    <h3>Exploiting SQL Injection in Legacy Systems</h3>
+                    <p class="post-meta">
+                        <span class="author">By: SQLMaster</span>
+                        <span class="date">Date: May 28, 2023</span>
+                    </p>
+                    <p>Discover how outdated systems are still vulnerable to SQL injection attacks. We'll explore common vulnerabilities and demonstrate safe testing methods.</p>
+                    <a href="#" class="read-more">Read More</a>
+                </article>
+
+                <article class="post">
+                    <h3>Buffer Overflow Techniques in Modern Software</h3>
+                    <p class="post-meta">
+                        <span class="author">By: OverflowExpert</span>
+                        <span class="date">Date: April 10, 2023</span>
+                    </p>
+                    <p>Despite advances in software security, buffer overflow vulnerabilities persist. Learn about current exploitation techniques and prevention strategies.</p>
+                    <a href="#" class="read-more">Read More</a>
+                </article>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Astrum IT Academy H4ck3rs. All rights reserved. Use responsibly.</p>
+    </footer>
+
+    <button id="mode-toggle">Light Mode</button>
+
+    <script>
+        const modeToggle = document.getElementById('mode-toggle');
+        const body = document.body;
+
+        modeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            const isLightMode = body.classList.contains('light-mode');
+            modeToggle.textContent = isLightMode ? 'Dark Mode' : 'Light Mode';
+        });
+    </script>
+</body>
+</html>
+

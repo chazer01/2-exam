@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Zero-day Exploit Discovered in Popular CMS - Astrum IT Academy H4ck3rs</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body class="page-container">
+    <div class="content-wrap">
+        <header>
+            <h1>Astrum IT Academy H4ck3rs</h1>
+        </header>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="articles-by-category.html">Exploits</a>
+            <a href="#">Tools</a>
+            <a href="#">CTF</a>
+            <a href="add-post.html">Add New Article</a>
+        </nav>
+
+        <main>
+            <article class="post-content">
+                <div class="post-meta">
+                    <span>Author: Anon1337</span>
+                    <span>Date: June 15, 2023</span>
+                </div>
+                <h1>New Zero-day Exploit Discovered in Popular CMS</h1>
+                <p>A critical vulnerability has been uncovered in a widely-used Content Management System (CMS), potentially affecting millions of websites worldwide. This zero-day exploit allows attackers to gain unauthorized access and execute arbitrary code on affected systems.</p>
+                
+                <h2>The Vulnerability</h2>
+                <p>The vulnerability, dubbed "CMSploit", is a remote code execution (RCE) flaw found in the core file upload functionality of the CMS. It bypasses existing security measures, allowing malicious actors to upload and execute arbitrary PHP code.</p>
+                
+                <div class="terminal">
+                    curl -X POST -F "file=@malicious.php" http://vulnerable-site.com/upload.php
+                </div>
+                
+                <h2>Proof of Concept</h2>
+                <p>Here's a simplified version of the vulnerable code:</p>
+                <pre><code>
+&lt;?php
+if ($_FILES['file']['type'] === 'image/jpeg') {
+    $uploaddir = '/var/www/uploads/';
+    $uploadfile = $uploaddir . basename($_FILES['file']['name']);
+    move_uploaded_file($_FILES['file']['tmp_name'], $uploadfile);
+    echo "File is valid, and was successfully uploaded.";
+} else {
+    echo "File is not a valid JPEG.";
+}
+?&gt;
+                </code></pre>
+                <p>The vulnerability lies in the insufficient validation of the file type, which relies solely on the MIME type provided by the client.</p>
+                
+                <h2>Impact and Mitigation</h2>
+                <p>The impact of this vulnerability is severe, as it could lead to complete server takeover. To mitigate the risk:</p>
+                <ul>
+                    <li>Update your CMS to the latest version immediately</li>
+                    <li>Implement strong file validation, including content inspection</li>
+                    <li>Use Web Application Firewalls (WAF) to filter malicious requests</li>
+                    <li>Regularly audit your systems for unauthorized changes</li>
+                </ul>
+                
+                <p>Remember, responsible disclosure is crucial in the world of cybersecurity. If you discover a vulnerability, always report it to the vendor before making it public.</p>
+            </article>
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Astrum IT Academy H4ck3rs. All rights reserved. Use responsibly.</p>
+    </footer>
+
+    <button id="mode-toggle">Light Mode</button>
+
+    <script>
+        const modeToggle = document.getElementById('mode-toggle');
+        const body = document.body;
+
+        modeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            const isLightMode = body.classList.contains('light-mode');
+            modeToggle.textContent = isLightMode ? 'Dark Mode' : 'Light Mode';
+        });
+    </script>
+</body>
+</html>
+

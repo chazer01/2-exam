@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astrum IT Academy H4ck3rs</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-container">
+    <div class="content-wrap">
+        <header>
+            <h1>Astrum IT Academy H4ck3rs</h1>
+        </header>
+
+        <nav>
+            <a href="#">Home</a>
+            <a href="articles-by-category.html">Exploits</a>
+            <a href="{% url 'articles:category' %}">Tools</a>
+            <a href="{% url 'articles:category' %}">CTF</a>
+            <a href="{% url 'articles:create' %}">Add New Article</a>
+        </nav>
+
+        <main>
+            <div class="ascii-art">
+ _    _            _             _        _   _                      
+| |  | |          | |           ( )      | | | |                     
+| |__| | __ _  ___| | _____ _ __|/ ___   | |_| | __ ___   _____ _ __ 
+|  __  |/ _` |/ __| |/ / _ \ '__| / __|  |  _  |/ _` \ \ / / _ \ '__|
+| |  | | (_| | (__|   <  __/ |    \__ \  | | | | (_| |\ V /  __/ |   
+|_|  |_|\__,_|\___|_|\_\___|_|    |___/  \_| |_/\__,_| \_/ \___|_|   
+            </div>
+
+            <article class="post">
+                <h2>New Zero-day Exploit Discovered in Popular CMS</h2>
+                <p>A critical vulnerability has been found in a widely-used Content Management System. Learn about the exploit, its potential impact, and how to protect your systems.</p>
+                <a href="detail.html" class="read-more">Read More</a>
+            </article>
+
+            <article class="post">
+                <h2>Ethical Hacking: Breaking Systems to Protect Them</h2>
+                <p>Dive into the world of ethical hacking. Discover the tools, techniques, and mindset needed to identify vulnerabilities and strengthen cybersecurity defenses.</p>
+                <a href="#" class="read-more">Read More</a>
+            </article>
+
+            <article class="post">
+                <h2>Advanced Cryptography Techniques for Secure Communication</h2>
+                <p>Explore cutting-edge cryptography methods used by hackers and security professionals alike. Learn how to implement robust encryption in your projects.</p>
+                <a href="{% url 'articles:article_detail' %}" class="read-more">Read More</a>
+            </article>
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Astrum IT Academy H4ck3rs. All rights reserved. Use responsibly.</p>
+    </footer>
+
+    <button id="mode-toggle">Light Mode</button>
+
+    <script>
+        const modeToggle = document.getElementById('mode-toggle');
+        const body = document.body;
+
+        modeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            const isLightMode = body.classList.contains('light-mode');
+            modeToggle.textContent = isLightMode ? 'Dark Mode' : 'Light Mode';
+        });
+    </script>
+</body>
+</html>
+
